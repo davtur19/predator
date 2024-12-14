@@ -158,7 +158,7 @@ SEND_TO_SYSLOG = False
 ## Dependencies
 After cloning project (example in /opt/predator):
 ```sh
-apt install python3 python3-pip python3-venv
+apt install python3 python3-pip python3-venv jq
 cd /opt/predator
 python3 -m venv predator_env
 source predator_env/bin/activate
