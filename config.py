@@ -5,20 +5,20 @@ import logging
 
 predator_file_path = os.path.dirname(__file__)
 
-PATH_LOGGER_PREDATOR_MAIN = "{}/var/log/predator.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_DNS = "{}/var/log/predator_dns.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_THREATS = "{}/var/log/predator_threats.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_MANAGEMENT = "{}/var/log/predator_management.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_SNIFFERS = "{}/var/log/predator_sniffers.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_L7 = "{}/var/log/predator_l7.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_LIBRARY = "{}/var/log/predator_library.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_PROXY = "{}/var/log/predator_proxy.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_DUMMY = "{}/var/log/predator_dummy.log".format(predator_file_path)
-PATH_LOGGER_PREDATOR_MASTER_EXCEPTIONS = "{}/var/log/predator_boom.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_MAIN = "{}/log/predator.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_DNS = "{}/log/predator_dns.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_THREATS = "{}/log/predator_threats.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_MANAGEMENT = "{}/log/predator_management.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_SNIFFERS = "{}/log/predator_sniffers.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_L7 = "{}/log/predator_l7.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_LIBRARY = "{}/log/predator_library.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_PROXY = "{}/log/predator_proxy.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_DUMMY = "{}/log/predator_dummy.log".format(predator_file_path)
+PATH_LOGGER_PREDATOR_MASTER_EXCEPTIONS = "{}/log/predator_boom.log".format(predator_file_path)
 PATH_JSON = "{}/conf/json/".format(predator_file_path)
 
-SOCKET_LIBRARY = "{}/var/run/library.sock".format(predator_file_path)
-SOCKET_LIBRARY_BASE_CLIENT = "{}/var/run/".format(predator_file_path)
+SOCKET_LIBRARY = "{}/run/library.sock".format(predator_file_path)
+SOCKET_LIBRARY_BASE_CLIENT = "{}/run/".format(predator_file_path)
 
 DNS = {}
 THREADS = {}
