@@ -1,6 +1,6 @@
 import logging
 import sys
-import config
+import os
 
 class PredatorLogger:
 
@@ -11,6 +11,11 @@ class PredatorLogger:
     self.logger = logging.getLogger(self.nome_log)
     self.logger.setLevel(log_level)
     formatter = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s')
+
+    # Assicurati che la directory esista
+    log_dir = os.path.dirname(self.path_log)
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
 
     file_handler = logging.FileHandler(self.path_log)
     file_handler.setLevel(log_level)
