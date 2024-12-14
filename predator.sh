@@ -21,7 +21,7 @@ update_full() {
     git pull
   else
     cd "${APP_DIR}/.."
-    git clone git@github.com:kavat/anubi-signatures.git
+    git clone https://github.com/kavat/anubi-signatures
   fi
     
   for file_ip_list in $(ls "${PATH_ANUBI_SIGNATURES}/ips" | grep "[0-9][0-9][0-9][0-9]\-[0-9][0-9]\.list"); do
@@ -48,7 +48,7 @@ update() {
     git pull
   else
     cd "${APP_DIR}/.."
-    git clone git@github.com:kavat/anubi-signatures.git
+    git clone https://github.com/kavat/anubi-signatures
   fi
 
   cat "${PATH_ANUBI_SIGNATURES}/ips/${anno}-${mese}.list" | grep "[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}" | awk -F':' '{print "\\\""$1"\\\":\\\""$2"\\\""}' | xargs echo | sed "s/ /,/g" | sed "s/^/{/g" | sed "s/$/}/g" > "${JSON_PATH}/anubi_${anno}_${mese}_ip.json"
