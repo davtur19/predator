@@ -22,17 +22,17 @@ It allows rules based on:
 * payload (patterns_tcp_udp.json)
 Format is similar for IP and domains, such below:
 * Simple file JSON with IP as key and description CTI as value, such
-```
+```json
 {"1.10.146.175":"misp","1.117.62.81":"misp","1.14.194.206":"misp","1.14.206.72":"misp", … }
 ```
 name will be similar to anubi_YYYY_MM_ip.json
 * Simple file JSON with domain as key and description CTI as value, such
 name will be similar to anubi_YYYY_MM_fqdn.json
-```
+```json
 {"0-lx.2037673.xyz":"misp","0-lx.49746487.xyz":"misp","00lx.13265926.xyz":“misp", …}
 ```
 * Simple file with Array with patterns as values, such
-```
+```python
 ["PATTERN_1", "PATTERN_2", "PATTERN_3", …] 
 ```
 name is static and it is patterns_tcp_udp.json
@@ -43,30 +43,30 @@ name is static and it is patterns_tcp_udp.json
 * Check for incoming/outcoming connection from/to malicious IP
 * Check for incoming/outcoming connection with pattern monitored
 Default in config.py is True
-```
+```python
 IDS = True
 ```
 ### API
 API handles interaction among users and system (such updating rules without restart tool)
 Features available are:
 * help, listing features available
-```
+```sh
 curl -XPOST http://127.0.0.1:10000/api -H "content-type: application/json" -d "{\"func\":\"help\"}"
 ```
 * createca, creating Certification Authority certificate usable to intercept SSL traffic in proxy module
-```
+```sh
 curl -XPOST http://127.0.0.1:10000/api -H "content-type: application/json" -d "{\"func\":\"createca\"}"
 ```
 * loadjson, loading of new rules saved in rule config path without restarting tool; example with JSON file named test.json based in /opt/predator/conf/json as default
-```
+```sh
 curl -XPOST http://127.0.0.1:10000/api -H "content-type: application/json" -d "{\"func\":\"loadjson\",\"file_json\":\"test.json\"}"
 ```
 Default in config.py is True
-```
+```python
 API = True
 ```
 and set dummy address to 127.0.0.1 on TCP/10000
-```
+```python
 MANAGEMENT_HOST = "127.0.0.1"
 MANAGEMENT_PORT = 10000
 ```
@@ -75,27 +75,27 @@ User is helped by a simply webui in order to interact with Predator (as default 
 ![Predator WebUI](screenshots/api.png)
 ### Proxy
 MITM for SSL termination and possibility to pattern checking based on rules previously described; default in config.py is False
-```
+```python
 PROXY = False
 ```
 To generate CA in order to perform MITM following commands are required:
-```
+```sh
 curl -XPOST http://127.0.0.1:10000/api -H "content-type: application/json" -d "{\"func\":\"createca\"}"
 curl -x http://127.0.0.1:7777 http://predator.fuck
 ```
 Default configuration in config.py set proxy address to 127.0.0.1 on TCP/7777
-```
+```python
 PROXY_HOST = "127.0.0.1"
 PROXY_PORT = 7777
 ```
 After CA has been generated, proxy can be set in order to perform traffic inspection
 ### Dummy
 Traffic decryption through Proxy module replication to internal network for third parties analysis (such Suricata); default in config.py is False
-```
+```python
 DUMMY = False
 ```
 and set dummy address to 127.0.0.1 on TCP/9999
-```
+```python
 DUMMY_HOST = "127.0.0.1"
 DUMMY_PORT = 9999
 ```
@@ -106,7 +106,7 @@ DUMMY_PORT = 9999
 ## config.py
 Most imporant settings in configuration file are reported and explained below:
 * general paths
-```
+```python
 PATH_LOGGER_PREDATOR_MAIN = '/var/log/predator.log'
 PATH_LOGGER_PREDATOR_DNS = '/var/log/predator_dns.log'
 PATH_LOGGER_PREDATOR_INTELLIGENCE = '/var/log/predator_intelligence.log'
@@ -120,7 +120,7 @@ PATH_LOGGER_PREDATOR_MASTER_EXCEPTIONS = '/var/log/predator_boom.log'
 PATH_JSON = "/opt/predator/conf/json/"
 ```
 * IP or CIDR list to control as traffic source or destination
-```
+```python
 CIDRS = ['___XXX.XXX.XXX.XXX/YY___']
 ```
 * Proxy CA
@@ -134,21 +134,21 @@ CERT_KEY_SIZE = 2048
 LINK_DOWNLOAD_CA = "http://predator.fuck/"
 ```
 * Proxy IP interface
-```
+```python
 PROXY_HOST = "___LOCAL_IP___"
 PROXY_PORT = 7777
 ```
 * IDS interface to monitor
-```
+```python
 NICS_TO_SNIFF = ["___LOCAL_ETH___"]
 ```
 * Dummy interface
-```
+```python
 DUMMY_HOST = "___LOCAL_IP___"
 DUMMY_PORT = 9999
 ```
 * Modules enabling/disabling control
-```
+```python
 IDS = True
 PROXY = False
 SEND_TO_DUMMY = False
@@ -157,7 +157,7 @@ SEND_TO_SYSLOG = False
 
 ## Dependencies
 After cloning project (example in /opt/predator):
-``
+```sh
 apt install python3 python3-pip python3-venv
 cd /opt/predator
 python3 -m venv predator_env
@@ -168,21 +168,21 @@ pip3 install brotli
 pip3 install websocket
 pip3 install cryptography
 mkdir -p /opt/predator/var/{log,run}
-``
+```
 
 ## Start
 After installing dependencies, you are ready to launch Predator. 
 First launch has no rule loaded, proceed launching
-```
+```sh
 /opt/predator/predator.sh rules
 ```
 Rules can be managed next using API.
 You can proceed now launching tool; Predator is easy to start and you can do it with following commands (if you have created venv remember to active it before):
-```
+```sh
 python3 ./predator.py
 ```
 or
-```
+```sh
 ./predator.sh start
 ```
 Root privileges are required.
