@@ -56,13 +56,23 @@ class Library:
   def server(self):
     self.init_rules()
     try:
-      os.unlink(config.SOCKET_LIBRARY)
+      # Check if the socket file exists, otherwise create the directory
+      socket_path = config.SOCKET_LIBRARY
+      socket_dir = os.path.dirname(socket_path)
+
+      if not os.path.exists(socket_dir):
+        os.makedirs(socket_dir)  # Create the directory if it does not exist
+
+      if os.path.exists(socket_path):
+        os.unlink(socket_path)  # Delete the file if it already exists
+
     except OSError:
       if os.path.exists(config.SOCKET_LIBRARY):
         raise
 
     server = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
-    server.bind(config.SOCKET_LIBRARY)
+    server.bind(socket_path)
+
 
     config.LOGGERS["RESOURCES"]["LOGGER_PREDATOR_LIBRARY"].get_logger().info('Server is listening for incoming connections...')
     while True:
