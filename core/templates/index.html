@@ -9,10 +9,10 @@
       #output {width: 100% !important;}
     </style>
     <script>
-      var URL = "http://"+window.location.hostname+":"+window.location.port+"/api";
+      const URL = "http://"  +window.location.hostname + ":" + window.location.port + "/api";
       function exec_api(api, div_arg) {
-        var url_to_call = URL + "?func=" + api;
-        var xmlHttp = new XMLHttpRequest();
+        const url_to_call = URL + "?func=" + api;
+        let xmlHttp = new XMLHttpRequest();
         if(api == "loadjson") {
           url_to_call = url_to_call + "&file_json=" + encodeURIComponent(document.getElementById('txt_1').value);
         }
@@ -21,7 +21,7 @@
         }
         xmlHttp.open("GET", url_to_call, false); // false for synchronous request
         xmlHttp.send(null);
-        var risp = JSON.parse(xmlHttp.responseText);
+        let risp = JSON.parse(xmlHttp.responseText);
         if(api == "conf" || api == "createca") {
           document.getElementById(div_arg).innerHTML = risp["msg"];
         }
