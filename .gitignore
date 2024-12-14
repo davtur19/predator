@@ -1,7 +1,7 @@
 certs/
 conf/json
-var/run
-var/log
+run
+log
 __pycache__/
 core/__pycache__/
 venv/

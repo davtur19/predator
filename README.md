@@ -57,7 +57,7 @@ curl -XPOST http://127.0.0.1:10000/api -H "content-type: application/json" -d "{
 ```sh
 curl -XPOST http://127.0.0.1:10000/api -H "content-type: application/json" -d "{\"func\":\"createca\"}"
 ```
-* loadjson, loading of new rules saved in rule config path without restarting tool; example with JSON file named test.json based in /opt/predator/conf/json as default
+* loadjson, loading of new rules saved in rule config path without restarting tool; example with JSON file named test.json based in /predator/conf/json as default
 ```sh
 curl -XPOST http://127.0.0.1:10000/api -H "content-type: application/json" -d "{\"func\":\"loadjson\",\"file_json\":\"test.json\"}"
 ```
@@ -107,28 +107,28 @@ DUMMY_PORT = 9999
 Most imporant settings in configuration file are reported and explained below:
 * general paths
 ```python
-PATH_LOGGER_PREDATOR_MAIN = '/var/log/predator.log'
-PATH_LOGGER_PREDATOR_DNS = '/var/log/predator_dns.log'
-PATH_LOGGER_PREDATOR_INTELLIGENCE = '/var/log/predator_intelligence.log'
-PATH_LOGGER_PREDATOR_THREATS = '/var/log/predator_threats.log'
-PATH_LOGGER_PREDATOR_MANAGEMENT = '/var/log/predator_management.log'
-PATH_LOGGER_PREDATOR_SNIFFERS = '/var/log/predator_sniffers.log'
-PATH_LOGGER_PREDATOR_L7 = '/var/log/predator_l7.log'
-PATH_LOGGER_PREDATOR_PROXY = '/var/log/predator_proxy.log'
-PATH_LOGGER_PREDATOR_DUMMY = '/var/log/predator_dummy.log'
-PATH_LOGGER_PREDATOR_MASTER_EXCEPTIONS = '/var/log/predator_boom.log'
-PATH_JSON = "/opt/predator/conf/json/"
+PATH_LOGGER_PREDATOR_MAIN = '/log/predator.log'
+PATH_LOGGER_PREDATOR_DNS = '/log/predator_dns.log'
+PATH_LOGGER_PREDATOR_INTELLIGENCE = '/log/predator_intelligence.log'
+PATH_LOGGER_PREDATOR_THREATS = '/log/predator_threats.log'
+PATH_LOGGER_PREDATOR_MANAGEMENT = '/log/predator_management.log'
+PATH_LOGGER_PREDATOR_SNIFFERS = '/log/predator_sniffers.log'
+PATH_LOGGER_PREDATOR_L7 = '/log/predator_l7.log'
+PATH_LOGGER_PREDATOR_PROXY = '/log/predator_proxy.log'
+PATH_LOGGER_PREDATOR_DUMMY = '/log/predator_dummy.log'
+PATH_LOGGER_PREDATOR_MASTER_EXCEPTIONS = '/log/predator_boom.log'
+PATH_JSON = "/predator/conf/json/"
 ```
 * IP or CIDR list to control as traffic source or destination
 ```python
 CIDRS = ['___XXX.XXX.XXX.XXX/YY___']
 ```
 * Proxy CA
-```
-CA_KEY = "/opt/predator/certs/ca.key"
-CA_CRT = "/opt/predator/certs/ca.crt"
-CERT_KEY = "/opt/predator/certs/cert.key"
-CERT_DIR = "/opt/predator/certs"
+```python
+CA_KEY = "/predator/certs/ca.key"
+CA_CRT = "/predator/certs/ca.crt"
+CERT_KEY = "/predator/certs/cert.key"
+CERT_DIR = "/predator/certs"
 CA_KEY_SIZE = 2048
 CERT_KEY_SIZE = 2048
 LINK_DOWNLOAD_CA = "http://predator.fuck/"

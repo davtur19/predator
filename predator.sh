@@ -5,8 +5,8 @@ APP_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 APP_PATH="${APP_DIR}/predator.py"
 CONF_PATH="${APP_DIR}/config.py"
 JSON_PATH="${APP_DIR}/conf/json"
-LOG_PATH="${APP_DIR}/var/log"
-PID_FILE="${APP_DIR}/var/run/predator.pid"
+LOG_PATH="${APP_DIR}/log"
+PID_FILE="${APP_DIR}/run/predator.pid"
 PATH_ANUBI_SIGNATURES="${APP_DIR}/../anubi-signatures"
 PATH_VENV="${APP_DIR}/predator_env/"
 MANAGEMENT_HOST=$(cat ${CONF_PATH} | grep MANAGEMENT_HOST | awk -F' = ' '{print $2}')
