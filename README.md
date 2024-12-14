@@ -156,25 +156,20 @@ SEND_TO_SYSLOG = False
 ```
 
 ## Dependencies
-After cloning project (example in /opt/predator):
+After cloning project:
 ```sh
 apt install python3 python3-pip python3-venv jq
-cd /opt/predator
-python3 -m venv predator_env
-source predator_env/bin/activate
-pip3 install scapy 
-pip3 install flask
-pip3 install brotli
-pip3 install websocket
-pip3 install cryptography
-mkdir -p /opt/predator/var/{log,run}
+cd predator
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
 ```
 
 ## Start
 After installing dependencies, you are ready to launch Predator. 
 First launch has no rule loaded, proceed launching
 ```sh
-/opt/predator/predator.sh rules
+./predator.sh rules
 ```
 Rules can be managed next using API.
 You can proceed now launching tool; Predator is easy to start and you can do it with following commands (if you have created venv remember to active it before):
